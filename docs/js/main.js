@@ -8,7 +8,7 @@ var Enemy = (function () {
         this.game = g;
         this.x = x;
         this.y = y;
-        this.speed = 1.5;
+        this.speed = Math.floor((Math.random() * 1.8) + 1);
         this.enemy = document.createElement("enemy");
         document.body.appendChild(this.enemy);
         this.move();
@@ -33,6 +33,8 @@ var Game = (function () {
         this.lives = 3;
         this.spaceship = new Spaceship(50, 80, this);
         this.enemies = new Array();
+        this.hud = document.createElement("score");
+        document.body.appendChild(this.hud);
         for (var i = 0; i < 200; i++) {
             this.enemies.push(new Enemy(Math.floor((Math.random() * 1800) + 1), Math.floor((Math.random() * -10000) + -1), this));
         }
@@ -66,6 +68,7 @@ var Game = (function () {
             e.move();
         }
         this.spaceship.move();
+        this.hud.innerHTML = "score: " + this.counter;
         requestAnimationFrame(function () { return _this.gameLoop(); });
     };
     Game.prototype.addBullet = function (b, c) {
@@ -78,8 +81,10 @@ var Game = (function () {
             console.log(this.lives);
             this.enemies.splice(this.enemies.indexOf(e), 1);
             if (this.lives < 0) {
-                this.enemies = [];
-                this.bullets = [];
+                var g = document.createElement("gameover");
+                document.body.appendChild(g);
+                this.hud.innerHTML = "";
+                g.innerHTML = "GAME OVER, YOUR SCORE: " + this.counter;
             }
         }
     };
@@ -109,8 +114,16 @@ var Bullet = (function () {
     };
     return Bullet;
 }());
+var hud = (function () {
+    function hud() {
+    }
+    return hud;
+}());
 window.addEventListener("load", function () {
-    new Game();
+    var s = document.createElement("start");
+    document.body.appendChild(s);
+    s.innerHTML = "START";
+    s.onclick = function (e) { new Game(); s.innerHTML = ""; };
 });
 var Spaceship = (function () {
     function Spaceship(x, y, g) {

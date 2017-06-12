@@ -1,3 +1,6 @@
 window.addEventListener("load", function() {
-    new Game();
+    var s = document.createElement("start");
+    document.body.appendChild(s);
+    s.innerHTML = "START";
+    s.onclick = (e:MouseEvent) => {new Game(); s.innerHTML = "";};
 });

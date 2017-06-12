@@ -3,6 +3,7 @@
 
 class Game {
 
+    public hud:HTMLElement;
     private enemies:Array<Enemy>;
     public bullets:Array<Bullet> = new Array<Bullet>();
     private spaceship : Spaceship;
@@ -14,11 +15,12 @@ class Game {
     constructor() {
         this.spaceship = new Spaceship(50, 80,this);
         this.enemies = new Array<Enemy>();
+        this.hud = document.createElement("score");
+        document.body.appendChild(this.hud);
 
         for(let i = 0; i < 200; i++){
             this.enemies.push(new Enemy(Math.floor((Math.random() * 1800) + 1),Math.floor((Math.random() * -10000) + -1),this));
         }
-
         requestAnimationFrame(() => this.gameLoop());  
     }
     
@@ -49,6 +51,8 @@ class Game {
     }
 
     this.spaceship.move();
+    
+    this.hud.innerHTML = "score: " + this.counter;
          
         requestAnimationFrame(() => this.gameLoop());
     }
@@ -63,8 +67,10 @@ class Game {
             console.log(this.lives); 
             this.enemies.splice(this.enemies.indexOf(e), 1);
             if(this.lives < 0){
-                this.enemies = [];
-                this.bullets = [];
+                let g = document.createElement("gameover");
+                document.body.appendChild(g);
+                this.hud.innerHTML= "";
+                g.innerHTML = "GAME OVER, YOUR SCORE: " + this.counter;
             }
         }
         

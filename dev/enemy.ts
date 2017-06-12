@@ -14,7 +14,7 @@ class Enemy {
         this.game = g;
         this.x = x;
         this.y = y; 
-        this.speed = 1.5;  
+        this.speed = Math.floor((Math.random() * 1.8) + 1)  
         this.enemy = document.createElement("enemy");
         document.body.appendChild(this.enemy);
         this.move();
