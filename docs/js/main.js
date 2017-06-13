@@ -85,6 +85,9 @@ var Game = (function () {
                 document.body.appendChild(g);
                 this.hud.innerHTML = "";
                 g.innerHTML = "GAME OVER, YOUR SCORE: " + this.counter;
+                window.setTimeout(function () {
+                    location.reload();
+                }, 2000);
             }
         }
     };
