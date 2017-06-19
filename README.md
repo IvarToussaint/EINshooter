@@ -10,7 +10,7 @@ Classes
 Ik heb classes gebruikt om de verschillende soorten onderdel voor de game te maken, de classes die ik heb zijn onder andere game, enemy, player
 
 Instances
-
+Ik heb gebruik gemaakt van instances wanneer ik een nieuw object wilde creeëren bijvoorbeeld in een array waar ik alle enemies aanmaak.
 
 Encapsulation
 Ik alle methods/objects de goede private/public/protected tag te geven, ik heb de extends van enemy de protected tag gegeven en de dingen die ikvan buiten niet wil aanpassen de private, alles wat vanaf buiten wel bewerkt mag worden heeft de public tag.
