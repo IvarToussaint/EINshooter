@@ -6,6 +6,7 @@ HANDLEIDING
 Het spel is te spelen met A & D om naar links en rechts te bewegen, met de SHIFT-knop kan geschoten worden om de andere vliegtuig die vanaf boven naar beneden vliegen, je verdient elke keer als je een vliegtuig neerschiet 1 punt.
 
 OOP
+
 Classes
 Ik heb classes gebruikt om de verschillende soorten onderdel voor de game te maken, de classes die ik heb zijn onder andere game, enemy, player
 
