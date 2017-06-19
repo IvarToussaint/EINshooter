@@ -1,6 +1,3 @@
-# AsteroidShooter
-Asteroid shooter game made in typescript
+WW2 Dogfight shooter
 
-
-
-#Klassen diagram
+De game is te spelen op deze link: 
