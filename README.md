@@ -23,4 +23,4 @@ Inheritance
 Mijn class Enemy heeft 2 classes die deze extenden, big_plane en small_plane, deze erfen alle onderdelen van Enemy maar de snelheid en afbeelding wordt aangepast
 
 
-![Screenshot](https://raw.githubusercontent.com/IvarToussaint/PRG04-Game/master/docs/images/GAMEUML2.png)
+![Screenshot](https://raw.githubusercontent.com/IvarToussaint/PRG04-Game/master/docs/images/GAMEUML3.png)
