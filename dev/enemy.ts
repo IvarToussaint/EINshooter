@@ -1,24 +1,19 @@
 class Enemy {
-    private enemy: HTMLElement;
+    public enemy: HTMLElement;
     public width: number = 100;
     public height: number = 80;
     public x:number = 100;
     public y:number = 100;
-    private speed:number;
-    private lives:number = 3;
-    private game:Game;
+    protected speed:number;
+    protected hp:number;
+    public game:Game;
 
     
 
     constructor(x:number, y:number, g:Game) {
         this.game = g;
         this.x = x;
-        this.y = y; 
-        this.speed = Math.floor((Math.random() * 1.8) + 1)  
-        this.enemy = document.createElement("enemy");
-        document.body.appendChild(this.enemy);
-        this.move();
-    
+        this.y = y;     
     }
 
     public move():void {
@@ -31,5 +26,11 @@ class Enemy {
 
     public remove():void{     
         this.enemy.remove();
+    }
+
+    public hpState(a:number):void {
+        if(a < 0){
+            this.remove;
+        }
     }
 } 

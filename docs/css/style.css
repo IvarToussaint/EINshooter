@@ -32,6 +32,20 @@ enemy {
     background-position: center;
 }
 
+enemy2 {
+    width: 100px; height: 80px;
+    background-image: url('../images/aircrafts/Aircraft_03.png');
+    background-size: cover;
+    background-position: center;
+}
+
+enemy3 {
+    width: 100px; height: 80px;
+    background-image: url('../images/Aircraft_02.png');
+    background-size: cover;
+    background-position: center;
+}
+
 bullet {
     width: 10px; height: 30px;
     background-image: url('../images/bullet.png');
@@ -47,6 +61,16 @@ start {
     top: 400px; 
     left: 43%;
 }
+
+guide {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 32px;
+    color: white;
+    position: absolute;
+    top: 500px; 
+    left: 25%;
+}
+
 
 score {
     font-family: 'Press Start 2P', cursive;

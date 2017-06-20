@@ -1,17 +1,22 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var Enemy = (function () {
     function Enemy(x, y, g) {
         this.width = 100;
         this.height = 80;
         this.x = 100;
         this.y = 100;
-        this.lives = 3;
         this.game = g;
         this.x = x;
         this.y = y;
-        this.speed = Math.floor((Math.random() * 1.8) + 1);
-        this.enemy = document.createElement("enemy");
-        document.body.appendChild(this.enemy);
-        this.move();
     }
     Enemy.prototype.move = function () {
         this.y += this.speed;
@@ -23,8 +28,59 @@ var Enemy = (function () {
     Enemy.prototype.remove = function () {
         this.enemy.remove();
     };
+    Enemy.prototype.hpState = function (a) {
+        if (a < 0) {
+            this.remove;
+        }
+    };
     return Enemy;
 }());
+var big_plane = (function (_super) {
+    __extends(big_plane, _super);
+    function big_plane(x, y, g) {
+        var _this = _super.call(this, x, y, g) || this;
+        _this.width = 100;
+        _this.height = 80;
+        _this.x = 100;
+        _this.y = 100;
+        _this.hp = 2;
+        _this.game = g;
+        _this.x = x;
+        _this.y = y;
+        _this.speed = Math.floor((Math.random() * 2) + 1);
+        _this.enemy = document.createElement("enemy3");
+        document.body.appendChild(_this.enemy);
+        _super.prototype.move.call(_this);
+        return _this;
+    }
+    big_plane.prototype.remove = function () {
+        _super.prototype.remove.call(this);
+    };
+    return big_plane;
+}(Enemy));
+var small_plane = (function (_super) {
+    __extends(small_plane, _super);
+    function small_plane(x, y, g) {
+        var _this = _super.call(this, x, y, g) || this;
+        _this.width = 100;
+        _this.height = 80;
+        _this.x = 100;
+        _this.y = 100;
+        _this.hp = 1;
+        _this.game = g;
+        _this.x = x;
+        _this.y = y;
+        _this.speed = Math.floor((Math.random() * 1.3) + 1);
+        _this.enemy = document.createElement("enemy2");
+        document.body.appendChild(_this.enemy);
+        _super.prototype.move.call(_this);
+        return _this;
+    }
+    small_plane.prototype.remove = function () {
+        _super.prototype.remove.call(this);
+    };
+    return small_plane;
+}(Enemy));
 var Game = (function () {
     function Game() {
         var _this = this;
@@ -35,8 +91,9 @@ var Game = (function () {
         this.enemies = new Array();
         this.hud = document.createElement("score");
         document.body.appendChild(this.hud);
-        for (var i = 0; i < 200; i++) {
-            this.enemies.push(new Enemy(Math.floor((Math.random() * 1800) + 1), Math.floor((Math.random() * -10000) + -1), this));
+        for (var i = 0; i < 100; i++) {
+            this.enemies.push(new small_plane(Math.floor((Math.random() * 1800) + 1), Math.floor((Math.random() * -10000) + -1), this));
+            this.enemies.push(new big_plane(Math.floor((Math.random() * 1800) + 1), Math.floor((Math.random() * -10000) + -1), this));
         }
         requestAnimationFrame(function () { return _this.gameLoop(); });
     }
@@ -52,6 +109,9 @@ var Game = (function () {
                     c.height + c.y > e.y) {
                     this.counter++;
                     console.log(this.counter);
+                    if (this.counter > 49) {
+                        console.log("MEMES");
+                    }
                     this.bullets.splice(this.bullets.indexOf(c), 1);
                     this.enemies.splice(this.enemies.indexOf(e), 1);
                     e.remove();
@@ -85,10 +145,17 @@ var Game = (function () {
                 document.body.appendChild(g);
                 this.hud.innerHTML = "";
                 g.innerHTML = "GAME OVER, YOUR SCORE: " + this.counter;
+                this.enemies = [];
+                this.bullets = [];
                 window.setTimeout(function () {
                     location.reload();
                 }, 2000);
             }
+        }
+    };
+    Game.prototype.ScoreCounter = function () {
+        if (this.counter > 49) {
+            console.log("VIVON ZULUL");
         }
     };
     return Game;
@@ -124,7 +191,10 @@ var hud = (function () {
 }());
 window.addEventListener("load", function () {
     var s = document.createElement("start");
+    var d = document.createElement("guide");
     document.body.appendChild(s);
+    document.body.appendChild(d);
+    d.innerHTML = "A & D to move SHIFT to shoot";
     s.innerHTML = "START";
     s.onclick = function (e) { new Game(); s.innerHTML = ""; };
 });
