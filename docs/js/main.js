@@ -197,6 +197,7 @@ window.addEventListener("load", function () {
     d.innerHTML = "A & D to move SHIFT to shoot";
     s.innerHTML = "START";
     s.onclick = function (e) { new Game(); s.innerHTML = ""; };
+    d.onclick = function (e) { new Game(); d.innerHTML = ""; };
 });
 var Spaceship = (function () {
     function Spaceship(x, y, g) {

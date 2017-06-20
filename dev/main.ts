@@ -8,4 +8,5 @@ window.addEventListener("load", function() {
     d.innerHTML = "A & D to move SHIFT to shoot"
     s.innerHTML = "START";
     s.onclick = (e:MouseEvent) => {new Game(); s.innerHTML = "";};
+    d.onclick = (e:MouseEvent) => {new Game(); d.innerHTML = "";};
 });
